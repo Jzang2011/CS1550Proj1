@@ -1,5 +1,8 @@
 // Jeremy Zang (jez30)
-
+//for compiling project
+// gcc -c library.c 
+// gcc -c driver.c (driver.c is my own testing driver similar to hilbert.c)
+// gcc -o driver driver.o library.o
 
 #include <time.h>
 
