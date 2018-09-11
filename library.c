@@ -59,7 +59,7 @@ void init_graphics() {
 
     //4. clear screen
     //Print "\033[2J" to tell the terminal to clear itself
-    printf(1, "\033[2J");
+    printf("\033[2J");
 
 
     struct termios termSettings;
@@ -76,7 +76,7 @@ void exit_graphics() {
 }
 
 char getkey() {
-	int returnVale = select();
+	//int returnVale = select();
     //Figure out how to use select system call.
 
 }
