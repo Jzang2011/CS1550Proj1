@@ -5,7 +5,7 @@
 // gcc -o driver driver.o library.o
 
 #include <time.h>
-#include <linux/fb.h>
+#include <linux/fb.h >
 #include <fcntl.h>
 #include <termios.h>
 
@@ -14,6 +14,7 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/select.h>
 
 #include <stdio.h> //just for testing
 #include <stdlib.h> // just for testing
@@ -44,7 +45,7 @@ void init_graphics() {
     struct fb_fix_screeninfo fInfo;
 
     int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &fInfo);
-    int retVal2 = ioctl(fbfd, FBIOGET_VSCREENINFO, &vInfo);
+    int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &vInfo);
 
     int yRez = fb_var_screeninfo.yres_virtual;
     int xRez = fb_fix_screeninfo.line_length;
