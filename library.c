@@ -16,7 +16,7 @@
 #define rgb(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
 
 #include <stdio.h> //just for testing
-
+#include <stdlib.h> // just for testing
 
 
 typedef unsigned short color_t;
@@ -72,6 +72,8 @@ void exit_graphics() {
 
 char getkey() {
 	int returnVale = select();
+    //Figure out how to use select system call.
+
 }
 
 void sleep_ms(long ms) {
