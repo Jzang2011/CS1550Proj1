@@ -5,18 +5,20 @@
 // gcc -o driver driver.o library.o
 
 #include <time.h>
+#include <linux/fb.h>
+#include <fcntl.h>
+#include <termios.h>
+
 #include <sys/select.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
-
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <termios.h>
-#define rgb(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
 
 #include <stdio.h> //just for testing
 #include <stdlib.h> // just for testing
+
+#define rgb(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
 
 
 typedef unsigned short color_t;
@@ -29,6 +31,8 @@ void init_graphics() {
 
     int fD = 0; //fD = fildDescriptor
     fD = open("/dev/fb0", O_RDWR);
+
+    //Just for testing
     if (fD == -1) {
         perror("Error: cannot open framebuffer device");
         exit(1);
