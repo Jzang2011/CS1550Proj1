@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <termios.h>
 #define rgb(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
 
 #include <stdio.h> //just for testing
@@ -64,7 +65,9 @@ void init_graphics() {
 }
 
 void exit_graphics() {
-	
+	//Undo disabling canonical mode
+    //make call to ioctl() to reenable  echoing and buffering
+    //Basically undo step 5 in init_graphics()
 }
 
 char getkey() {
