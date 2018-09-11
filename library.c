@@ -5,7 +5,7 @@
 // gcc -o driver driver.o library.o
 
 #include <time.h>
-#include <linux/fb.h >
+#include <linux/fb.h>
 #include <fcntl.h>
 #include <termios.h>
 
