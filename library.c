@@ -33,6 +33,7 @@ void init_graphics() {
     int yRez = 0;
     int xRez = 0;
 
+    //test
 	//1. Open graphics device 
 		// using a framebuffer
 	char filePath[] = "/dev/fb0"; // path to framebuffer 
@@ -50,8 +51,8 @@ void init_graphics() {
     int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &vInfo);
     int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &fInfo);
 
-    yRez = fb_var_screeninfo.yres_virtual;
-    xRez = fb_fix_screeninfo.line_length;
+    yRez = vInfo.yres_virtual;
+    xRez = fInfo.line_length;
 
     int mmapLength = yRez * xRez;
 
