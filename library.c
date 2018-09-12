@@ -28,8 +28,8 @@ typedef unsigned short color_t;
 void init_graphics() {
 
     int fD = 0; //fD = fild Descriptor
-   // struct fb_var_screeninfo vInfo;
-   // struct fb_fix_screeninfo fInfo;
+    struct fb_var_screeninfo vInfo;
+    struct fb_fix_screeninfo fInfo;
     int yRez = 0;
     int xRez = 0;
 
@@ -47,8 +47,8 @@ void init_graphics() {
 
     //3  use typedef to make a color type color_t
     // use ioctl to get screen size and bits per pixels
-    struct fb_fix_screeninfo fInfo = ioctl(fD, FBIOGET_FSCREENINFO);
-    struct fb_fix_screeninfo fInfo = ioctl(fD, FBIOGET_VSCREENINFO);
+    int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &fInfo);
+    int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &vInfo);
 
     yRez = fb_var_screeninfo.yres_virtual;
     xRez = fb_fix_screeninfo.line_length;
