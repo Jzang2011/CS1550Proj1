@@ -47,8 +47,8 @@ void init_graphics() {
 
     //3  use typedef to make a color type color_t
     // use ioctl to get screen size and bits per pixels
-    int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &fInfo);
-    int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &vInfo);
+    vInfo = ioctl(fD, FBIOGET_FSCREENINFO);
+    vInfo = ioctl(fD, FBIOGET_VSCREENINFO);
 
     yRez = fb_var_screeninfo.yres_virtual;
     xRez = fb_fix_screeninfo.line_length;
