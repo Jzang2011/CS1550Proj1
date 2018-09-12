@@ -47,8 +47,8 @@ void init_graphics() {
 
     //3  use typedef to make a color type color_t
     // use ioctl to get screen size and bits per pixels
-    vInfo = ioctl(fD, FBIOGET_FSCREENINFO);
-    vInfo = ioctl(fD, FBIOGET_VSCREENINFO);
+    int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &vInfo);
+    int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &fInfo);
 
     yRez = fb_var_screeninfo.yres_virtual;
     xRez = fb_fix_screeninfo.line_length;
@@ -79,9 +79,12 @@ void exit_graphics() {
 }
 
 char getkey() {
+    int key = 0;
     int fD = 0; //fD = fild Descriptor
+    fd_set fs;
 
-	int returnVale = select(fD, );
+    //int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
+	int returnVale = select(fD, &fs, 0, 0, 0);
     //Figure out how to use select system call.
 
 }
