@@ -20,18 +20,23 @@
 #include <stdio.h> //just for testing
 #include <stdlib.h> // just for testing
 
-#define rgb(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
+#define RGB(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31))
 
 
 typedef unsigned short color_t;
 
 void init_graphics() {
+
+    int fD = 0; //fD = fild Descriptor
+   // struct fb_var_screeninfo vInfo;
+   // struct fb_fix_screeninfo fInfo;
+    int yRez = 0;
+    int xRez = 0;
+
 	//1. Open graphics device 
 		// using a framebuffer
 	char filePath[] = "/dev/fb0"; // path to framebuffer 
 	printf("%s", filePath);
-
-    int fD = 0; //fD = fildDescriptor
     fD = open("/dev/fb0", O_RDWR);
 
     //Just for testing
@@ -42,14 +47,11 @@ void init_graphics() {
 
     //3  use typedef to make a color type color_t
     // use ioctl to get screen size and bits per pixels
-    struct fb_var_screeninfo vInfo;
-    struct fb_fix_screeninfo fInfo;
+    fb_fix_screeninfo fInfo = ioctl(fD, FBIOGET_FSCREENINFO);
+    fb_fix_screeninfo fInfo = ioctl(fD, FBIOGET_VSCREENINFO);
 
-    int retVal = ioctl(fD, FBIOGET_FSCREENINFO, &fInfo);
-    int retVal2 = ioctl(fD, FBIOGET_VSCREENINFO, &vInfo);
-
-    int yRez = fb_var_screeninfo.yres_virtual;
-    int xRez = fb_fix_screeninfo.line_length;
+    yRez = fb_var_screeninfo.yres_virtual;
+    xRez = fb_fix_screeninfo.line_length;
 
     int mmapLength = yRez * xRez;
 
@@ -77,7 +79,9 @@ void exit_graphics() {
 }
 
 char getkey() {
-	//int returnVale = select();
+    int fD = 0; //fD = fild Descriptor
+
+	int returnVale = select(fD, );
     //Figure out how to use select system call.
 
 }
