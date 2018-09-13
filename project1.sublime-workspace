@@ -1,0 +1,787 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"i",
+				"italic\tfont-style"
+			],
+			[
+				"font",
+				"font-style\tproperty"
+			],
+			[
+				"border",
+				"border-color\tproperty"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			],
+			[
+				"back",
+				"background-color\tproperty"
+			],
+			[
+				"sign",
+				"signum"
+			],
+			[
+				"sig",
+				"sighandler"
+			],
+			[
+				"er",
+				"errorCode"
+			],
+			[
+				"child",
+				"childpid"
+			],
+			[
+				"print",
+				"printf\tprintf …"
+			],
+			[
+				"tin",
+				"tiny3"
+			],
+			[
+				"tiny",
+				"tiny2"
+			],
+			[
+				"my",
+				"my_free"
+			],
+			[
+				"make",
+				"make_array"
+			],
+			[
+				"fre",
+				"free"
+			],
+			[
+				"Ma",
+				"MAGENTA"
+			],
+			[
+				"shr",
+				"shrink_heap"
+			],
+			[
+				"p",
+				"prev"
+			],
+			[
+				"coalesce",
+				"coalesce_left"
+			],
+			[
+				"coal",
+				"coalesce_both_sides"
+			],
+			[
+				"free",
+				"freeblock"
+			],
+			[
+				"smal",
+				"smallestBlockDiff"
+			],
+			[
+				"bl",
+				"Block"
+			],
+			[
+				"coa",
+				"coalesce_left"
+			],
+			[
+				"size",
+				"size"
+			],
+			[
+				"sr",
+				"shrink_heap"
+			],
+			[
+				"nex",
+				"next"
+			],
+			[
+				"link",
+				"link_nodes"
+			],
+			[
+				"sizeof",
+				"sizeof"
+			],
+			[
+				"old",
+				"old_size"
+			],
+			[
+				"mem",
+				"mem_slot"
+			],
+			[
+				"coales",
+				"coalesce_right"
+			],
+			[
+				"blockIs",
+				"blockIsFree"
+			],
+			[
+				"next",
+				"nextNext"
+			],
+			[
+				"siz",
+				"size"
+			],
+			[
+				"remove_",
+				"remove_node_from_end"
+			],
+			[
+				"best",
+				"bestFitBlock"
+			],
+			[
+				"re",
+				"remove_node_from_end"
+			],
+			[
+				"heap",
+				"heap_at_start"
+			],
+			[
+				"ma",
+				"malloc"
+			],
+			[
+				"compr",
+				"compressedSize"
+			],
+			[
+				"unc",
+				"uncompressedSize"
+			],
+			[
+				"compre",
+				"compressedBuffer"
+			],
+			[
+				"uncompr",
+				"uncompressedSize"
+			],
+			[
+				"uncom",
+				"uncompressedBuffer"
+			],
+			[
+				"compres",
+				"compressedSize"
+			],
+			[
+				"comp",
+				"compressedBuffer"
+			],
+			[
+				"uncomp",
+				"uncompressedSize"
+			],
+			[
+				"com",
+				"compressedSize"
+			],
+			[
+				"un",
+				"uncompressedSize"
+			],
+			[
+				"fo",
+				"fopen"
+			],
+			[
+				"arg",
+				"argv"
+			],
+			[
+				"ar",
+				"argNum"
+			],
+			[
+				"pr",
+				"printableCount"
+			],
+			[
+				"pri",
+				"printf\tprintf …"
+			],
+			[
+				"prin",
+				"printableCount"
+			],
+			[
+				"Fil",
+				"FILE"
+			],
+			[
+				"tr",
+				"trueCount"
+			],
+			[
+				"of",
+				"offsetBytes"
+			],
+			[
+				"it",
+				"item_size"
+			],
+			[
+				"inpu",
+				"inputArray"
+			],
+			[
+				"inp",
+				"input"
+			],
+			[
+				"les",
+				"less_than_50"
+			],
+			[
+				"Pre",
+				"PREDICATE"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"ph",
+				"pBmpHeader"
+			],
+			[
+				"rou",
+				"roundNum"
+			],
+			[
+				"USER",
+				"USER_LOSE"
+			],
+			[
+				"U",
+				"USER_LOSE"
+			],
+			[
+				"US",
+				"USER_LOSE"
+			],
+			[
+				"R",
+				"ROCK"
+			],
+			[
+				"SCISSORS",
+				"SCISSORS"
+			],
+			[
+				"b",
+				"b_norm"
+			],
+			[
+				"g",
+				"g_norm"
+			],
+			[
+				"Se",
+				"SEEK_CUR"
+			],
+			[
+				"S",
+				"SEEK_CUR"
+			],
+			[
+				"SEEK",
+				"SEEK_CUR"
+			],
+			[
+				"cur",
+				"currentPixelAdr"
+			],
+			[
+				"Bl",
+				"blueIntensity"
+			],
+			[
+				"gre",
+				"greenIntensity"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"user",
+				"userInput"
+			],
+			[
+				"rand",
+				"randomNum"
+			],
+			[
+				"comput",
+				"computerRpsString"
+			],
+			[
+				"rpsC",
+				"rpsCodeToString"
+			],
+			[
+				"rps",
+				"rpsString"
+			],
+			[
+				"player",
+				"playerScore"
+			],
+			[
+				"us",
+				"userKeepPlayingInput"
+			],
+			[
+				"urs",
+				"userKeepPlayingInput"
+			],
+			[
+				"round",
+				"roundResultCode"
+			],
+			[
+				"pla",
+				"playerScore"
+			],
+			[
+				"userI",
+				"userInputCode"
+			],
+			[
+				"con",
+				"convertUserInputToCode"
+			],
+			[
+				"ra",
+				"randomNum"
+			],
+			[
+				"we",
+				"weight"
+			],
+			[
+				"pl",
+				"planet"
+			],
+			[
+				"plan",
+				"planetWeight"
+			],
+			[
+				"str",
+				"streq_nocase"
+			],
+			[
+				"in",
+				"inputPlanet"
+			],
+			[
+				"e",
+				"earth"
+			],
+			[
+				"w",
+				"weight"
+			],
+			[
+				"read",
+				"read_line"
+			],
+			[
+				"COLOR_BL",
+				"COLOR_BLACK"
+			],
+			[
+				"miss",
+				"miss_count_message"
+			],
+			[
+				"incre",
+				"increment_miss_count"
+			],
+			[
+				"reset",
+				"reset_move_ball_every"
+			],
+			[
+				"move_bal",
+				"move_ball_every"
+			],
+			[
+				"increment",
+				"increment_ball_bounce_count"
+			],
+			[
+				"inc",
+				"increment_ball_bounce_count"
+			],
+			[
+				"frame",
+				"frame_count"
+			],
+			[
+				"game",
+				"game_started"
+			],
+			[
+				"Dis",
+				"Display_FillRect"
+			],
+			[
+				"Color",
+				"COLOR_BLACK"
+			],
+			[
+				"ballw",
+				"BALL_W"
+			],
+			[
+				"bal",
+				"ball_y"
+			],
+			[
+				"ball",
+				"ball_x"
+			],
+			[
+				"get_bl",
+				"get_ball_row_col"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "library.c",
+			"settings":
+			{
+				"buffer_size": 2960,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 299.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"c",
+				"Set Syntax: C"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"HTML",
+				"Set Syntax: HTML"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Packa",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"sftp",
+				"SFTP: Show Panel"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1550/Project 1/snake.c",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1520/assignment2-Jzang2011/connectFour.html",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs1550/project_1/library.c",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1550/Project 1/src/graphics.h",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1550/Project 1/src/library.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs1550/project_1/graphics.h",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs1550/project_1/hilbert.c",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 0449/privateLocal/cs449/build.sh",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 0449/privateLocal/sftp-config.json",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1550/Project 1/qemu-arm/start.bat",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1550/Project 1/qemu-arm/start.sh",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1520/assignment1-Jzang2011/aboutMe.css",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2018/COE-1520/assignment1-Jzang2011/index.html",
+		"/Volumes/Git 2.18.0 Mavericks Intel Universal/README.txt",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 0449/privateLocal/cs449/lab7_files/lab7/lab7",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab7_files/lab7/lab7.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab7_files/lab7/sftp-config.json",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 0449/privateLocal/cs449/lab7_files/lab7/build.sh",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project3_files/project3/mymalloc.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project3_files/project3/mydriver.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project3_files/project3/mymalloc.h",
+		"/Users/jeremyzang/Desktop/Makefile",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab6_files/lab6/lab6.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab6_files/lab6/build.sh",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 1186/on-track/on-track/MainMenu/src/mainmenu/view/mainmenuview.fxml",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 1186/TrainModel UML/TrainModelUserInterface.uml",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 1186/TrainModel UML/Overview.svg",
+		"/Users/jeremyzang/Desktop/jez30_2 executable disas of main()",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/gdb_lab/gdbdemo.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project1_files/proj1/rps.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project1_files/proj1/bmp_edit.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/project2_files/proj2/mystrings.c",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Spring 2018/COE 1186/on-track/on-track/TrainModel/src/trainmodel/view/TrainModelController.java",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab4_files/lab4/lab4.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab3_files/lab3/lab3.c",
+		"/private/var/folders/4w/t87qnw6x5jld4wb0ytj2yvx40000gn/T/b71cfaef-eb3e-4d20-b17d-b1f033f1125e/afs/pitt.edu/home/j/e/jez30/private/cs449/lab2_files/lab2/lab2.c",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw4/KnapsackSolver.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/Logisim/Lab6/jez30_lab6.txt",
+		"/Users/jeremyzang/Desktop/hw4/KnapsackSolver.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/Logisim/jez30_lab7.txt",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/Logisim/Lab4/jez30_lab4.txt",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw1/Heap.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw2/Main.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw2/ChainingHashMap.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/GIT_REPO/Project1/jez30_Proj1.asm",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/GIT_REPO/Project1/led_keypad.asm",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE0447_ComputerOganization&AssemblyLanguage/GIT_REPO/Project1/jez30_Project1.asm",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw1/WordReader.java",
+		"/Users/jeremyzang/Desktop/words.csv",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw1/Selector.java",
+		"/Users/jeremyzang/Documents/workspace/hw-01-1501/src/Main.java",
+		"/Users/jeremyzang/Documents/workspace/hw-01-1501/src/Selector.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw1/jeremyzang-cs1501/hw1/Selector.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE_GIT/Fall 2017/CoE1501_AlgorithmImplementation/Selection.java",
+		"/Users/jeremyzang/Desktop/Pitt_CoE/Fall 2017/CoE1501_AlgorithmImplementation/Git_Repo/hw1/words.csv",
+		"/Volumes/JZDRVSCH/statTrackerAssets/Asset 1.svg",
+		"/Users/jeremyzang/Documents/La Roche Academics/Class Documents/Spring 2017/CSCI4035I/section6/pokedex/Podfile",
+		"/Users/jeremyzang/Desktop/pokemon/Pokemon Hollow.ttf",
+		"/Users/jeremyzang/Desktop/pokemon/Pokemon Solid.ttf",
+		"/Users/jeremyzang/Documents/La Roche Academics/Class Documents/Spring 2017/CSCI4035I/section6/RainyShiny/Podfile"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "library.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 102.0
+	},
+	"pinned_build_system": "",
+	"project": "project1.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
