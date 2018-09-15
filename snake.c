@@ -3,12 +3,16 @@
 #include "graphics.h"
 #include <stdio.h> //just for testing
 
+//ASCII codes for keys;
 #define w_key	119
 #define a_key	97
 #define s_key	115
 #define d_key	100
+#define q_key 	113
 
-
+/*
+-	Just used for testing purposes
+*/
 void getKeyTest() {
 	char key = getkey();
 	while (key != 113) {
@@ -18,6 +22,9 @@ void getKeyTest() {
 	printf("getKeyTest() Done.\n");
 }
 
+/*
+-	Just used for testing purposes
+*/
 void sleepMsTest() {
 	printf("Starting sleepMSTest()\n");
 	int i;
@@ -29,14 +36,9 @@ void sleepMsTest() {
 	}
 }
 
-void init_graphics_test() {
-	init_graphics();
-}
-
-void exit_graphics_test() {
-	exit_graphics();
-}
-
+/*
+-	Just used for testing purposes
+*/
 void draw_big_pixel(void *img, int x, int y, color_t color){
 	int i;
 	int j;
@@ -55,6 +57,20 @@ int main(int argc, char **argv) {
 	// getKeyTest();
 	// sleepMsTest();
 
+	printf("WELCOME TO SNAKE GAME:\n");
+	printf("use w,s,a,d keys to move the snake\n");
+	printf("press q to quit.\n");
+	printf("game will start in 10 seconds.\n");
+
+	char key = getkey();
+	
+	// int i;
+	// for (i = 10; i > 0; --i)
+	// {
+	// 	printf("--%d--\n", i);
+	// 	sleep_ms(999);
+	// }
+
 	init_graphics();
 	char* offscreen_buffer = (char*) new_offscreen_buffer();
 
@@ -68,16 +84,44 @@ int main(int argc, char **argv) {
 
 	blit(offscreen_buffer);
 
-	char key = getkey();
-	while (key != 113) {
+	//Testing corner cases. Round corners of QEMU window prevent seeing botom corners. 
+	color_t red = RGB(31,0,0);
+	// draw_pixel(offscreen_buffer, 639, 0, red);
+	// draw_pixel(offscreen_buffer, 0, 477, red);
+	// draw_pixel(offscreen_buffer, 0, 0, red);
+	// draw_pixel(offscreen_buffer, 639, 477, red);
+
+	int x = 0;
+	int y = 0;
+	
+	//working
+	for (y = 0; y < 480; y++)
+	{
+		draw_line(offscreen_buffer, 0, 0, 639, y, green);
+	}
+
+	//not working
+	// y = 0;
+	// for (y = 0; y < 480; y++)
+	// {
+	// 	draw_line(offscreen_buffer, 639, 0, 0, y, red);
+	// }
+	draw_line(offscreen_buffer, 0, 479, 639, 0, red);
+
+
+	blit(offscreen_buffer);
+
+	while (key != 'q') {
 		draw_pixel(offscreen_buffer, x_coord, y_coord, black);
-		if (key == w_key) {
-			y_coord++;
-		} else if (key == s_key) {
+
+		// draw_line(offscreen_buffer, 0, 0, 639, 479, green);
+		if (key == 'w') {
 			y_coord--;
-		} else if (key == a_key) {
+		} else if (key == 's') {
+			y_coord++;
+		} else if (key == 'a') {
 			x_coord--;
-		} else if (key == d_key) {
+		} else if (key == 'd') {
 			x_coord++;
 		}
 		draw_pixel(offscreen_buffer, x_coord, y_coord, green);

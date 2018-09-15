@@ -33,7 +33,7 @@ struct termios termSettings;
 
 int sb_size; //size of the screen_buffer;
 int yRez;
-int xRez;
+int xLineLength;
 int frameBuffer = 0;
 
 void init_graphics() {
@@ -61,12 +61,9 @@ void init_graphics() {
     int retVal2 = ioctl(frameBuffer, FBIOGET_FSCREENINFO, &fInfo);
 
     yRez = vInfo.yres_virtual;
-    xRez = fInfo.line_length;
+    xLineLength = fInfo.line_length;
 
-    // printf("yRez is %d\n", yRez); //prints 480
-    // printf("xRez is %d\n", xRez); //prints 1280
-
-    sb_size = yRez * xRez;
+    sb_size = yRez * xLineLength;
  
     /* 2. memory mapping mmap()
         - void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
@@ -77,8 +74,6 @@ void init_graphics() {
         write(1, "ERROR mmap failed\n", 20);
         printf("errno is %d\n", errno);
     }
-    // printf("screen_buffer is %p\n", screen_buffer);
-    // printf("screen_buffer + 1 is %p\n", screen_buffer + 1);
 
     /* 4. Clear screen
         - Print "\033[2J" to tell the terminal to clear itself
@@ -103,11 +98,6 @@ void init_graphics() {
     */
     termSettings.c_lflag &= ~(ICANON | ECHO); //c_lflag = c_lflag AND !(ICANON OR ECHO)
     int retVal5 = ioctl(0, TCSETS, &termSettings);
-
-//  alternative code. 
-//     //force ECHO bit to zero 
-//     termSettings.c_lflag = (ECHO - ECHO); //should force ECHO bit to zero.
-//     ioctl(fD, TCSETS, &termSettings); //Set the new terminal settings
 }
 
 void exit_graphics() {
@@ -123,10 +113,6 @@ void exit_graphics() {
     termSettings.c_lflag |= (ICANON | ECHO); 
 
     int retVal2 = ioctl(fD, TCSETS, &termSettings);
-    // int retVal = ioctl(fD, TCSETS, &oldTermSettings);
-    
-    // printf("retVal is %d\n", retVal);
-    // printf("errno is %d\n", errno);
 
     //unmap memory so there is no memory leaking
     int retVal5 = munmap(screen_buffer, sb_size);
@@ -138,8 +124,6 @@ void exit_graphics() {
     //null out pointers. 
     screen_buffer = NULL;
     offscreen_buffer = NULL;
-
-    //It may be a good idea to clear the screen one last time. 
 }
 
 char getkey() {
@@ -147,7 +131,6 @@ char getkey() {
     int fD = 0; //fD is the file descriptor. 0 for keyboard input. 
     int nfds = 1; //number of file descriptors. 1 since we are only worried about keyboard input. 
     fd_set fs; //declare a fd_set named fs
-
 
     FD_ZERO(&fs);
     FD_SET(fD, &fs);
@@ -165,9 +148,6 @@ char getkey() {
     {
         //ssize_t read(int fd, void *buf, size_t count);
        int retVal = read(fD, &key, 1);
-       // printf("retVal from Read is %d\n", retVal);
-       // printf("Errno is %d\n", errno);
-        // printf("key pressed is %d\n", key);
     }
     return key; //value of key is the decimal value of the character. See ascii table. 
 }
@@ -192,13 +172,48 @@ void clear_screen(void *img) {
 }
 
 void draw_pixel(void *img, int x, int y, color_t color) {
-    int offset = (x + (y * (xRez/2))) * 2; //*2 for Each pixel is 2 bytes? 
+    int offset = (x + (y * (xLineLength/2))) * 2; //*2 for Each pixel is 2 bytes? xLineLength /2 = number of x pixels (640)
 	color_t* pixelAddr = img + (offset);
     *pixelAddr = color;
 }
 
+
+/*
+*   draw_line doesnt work for all slopes. 
+*/
 void draw_line(void *img, int x1, int y1, int x2, int y2, color_t c) {
-	
+	// function for line generation
+    //Code aquired from: https://www.geeksforgeeks.org/bresenhams-line-generation-algorithm/
+    //Code has been modified from original source to fit my requirements.
+   int m_new = 2 * (y2 - y1);
+   int slope_error_new = 0;
+   int x;
+   int y;
+   if ((x1 <= x2) && (y1 <= y2))
+   {
+        for (x = x1, y = y1; x <= x2; x++) 
+       {    
+
+          // Add slope to increment angle formed
+          slope_error_new += m_new; 
+      
+          // Slope error reached limit, time to increment
+          // y and update slope error.
+          if (y < yRez)
+          {
+            draw_pixel(img, x, y, c);
+          }
+           
+          if (slope_error_new >= 0)  
+          {       
+             y++;       
+             slope_error_new  -= 2 * (x2 - x1);    
+          }
+
+         
+       }
+   }
+      
 }
 
 void *new_offscreen_buffer() {
@@ -217,6 +232,9 @@ void blit(void *src) {
     }
 
 }
+
+
+
 
 
 //Add funciton to clear offscreen buffer.
