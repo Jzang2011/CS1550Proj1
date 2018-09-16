@@ -19,20 +19,14 @@
 
 #include "graphics.h"
 
-#include <stdio.h> //just for testing
-#include <stdlib.h> // just for testing
 #include <errno.h>
 
-struct termios oldTermSettings; //used to convert to old terminal settings.
 struct termios termSettings;
-
-// void* screen_buffer; //address of the memory mapping. 
-// void* offscreen_buffer;
-    char* screen_buffer; //perhaps it may be easier to work with a screen buffer of color_t type? 
-    char* offscreen_buffer; //you can get rid of this.
-
+char* screen_buffer; //perhaps it may be easier to work with a screen buffer of color_t type? 
+char* offscreen_buffer; //you can get rid of this.
 int sb_size; //size of the screen_buffer;
 int yRez;
+int xRez;
 int xLineLength;
 int frameBuffer = 0;
 
@@ -49,19 +43,19 @@ void init_graphics() {
 
     //Just for testing
     if (frameBuffer == -1) {
-        perror("Error: cannot open framebuffer device");
-        exit(1);
+         write(1, "ERROR: open() failed\n", 23);
     }
 
     /* 3  Use typedef to make a color type color_t (declared in graphics.h)
         - Use ioctl() to get screen size and bits per pixels.
         - Compute length of frameBuffer by yRez * line_length
     */
-    int retVal = ioctl(frameBuffer, FBIOGET_VSCREENINFO, &vInfo);
-    int retVal2 = ioctl(frameBuffer, FBIOGET_FSCREENINFO, &fInfo);
+    ioctl(frameBuffer, FBIOGET_VSCREENINFO, &vInfo);
+    ioctl(frameBuffer, FBIOGET_FSCREENINFO, &fInfo);
 
     yRez = vInfo.yres_virtual;
     xLineLength = fInfo.line_length;
+    xRez = xLineLength / 2;
 
     sb_size = yRez * xLineLength;
  
@@ -71,8 +65,7 @@ void init_graphics() {
     */
     screen_buffer = (char*) mmap(NULL, sb_size, PROT_READ | PROT_WRITE ,MAP_SHARED, frameBuffer, 0);
     if(screen_buffer == MAP_FAILED) {
-        write(1, "ERROR mmap failed\n", 20);
-        printf("errno is %d\n", errno);
+        write(1, "ERROR: mmap failed\n", 21);
     }
 
     /* 4. Clear screen
@@ -88,8 +81,7 @@ void init_graphics() {
         - The argument is a pointer to a termios structure. The current terminal parameters are set from the values stored in that structure. The change is immediate.
     - Pass fD of 0 to since ioctl() is being used to access the keyboard settings. 
     */
-    int retVal3 = ioctl(0, TCGETS, &termSettings); // loads terminal settings into termSettings. 
-    int retVal4 = ioctl(0, TCGETS, &oldTermSettings); //loads terminal settings into variable to be used later for reverting. 
+    ioctl(0, TCGETS, &termSettings); // loads terminal settings into termSettings. 
     
     /* 
     6. Disable canonical mode by unsetting the ICANON bit and disaling ECHO by forcing that bit to zero.
@@ -97,7 +89,7 @@ void init_graphics() {
      - Forces the ECHO bit to zero as well.
     */
     termSettings.c_lflag &= ~(ICANON | ECHO); //c_lflag = c_lflag AND !(ICANON OR ECHO)
-    int retVal5 = ioctl(0, TCSETS, &termSettings);
+    ioctl(0, TCSETS, &termSettings);
 }
 
 void exit_graphics() {
@@ -109,17 +101,17 @@ void exit_graphics() {
     */
 
     //Sets the settings back to the old settings which were saved in init.
-    int retVal = ioctl(fD, TCGETS, &termSettings);
+    ioctl(fD, TCGETS, &termSettings);
     termSettings.c_lflag |= (ICANON | ECHO); 
 
-    int retVal2 = ioctl(fD, TCSETS, &termSettings);
+    ioctl(fD, TCSETS, &termSettings);
 
     //unmap memory so there is no memory leaking
-    int retVal5 = munmap(screen_buffer, sb_size);
-    int retVal3 = munmap(offscreen_buffer, sb_size);
+    munmap(screen_buffer, sb_size);
+    munmap(offscreen_buffer, sb_size);
 
     //close files
-    int retVal4 = close(frameBuffer);
+    close(frameBuffer);
 
     //null out pointers. 
     screen_buffer = NULL;
@@ -147,7 +139,7 @@ char getkey() {
     if (numberOfKeysReady > 0)
     {
         //ssize_t read(int fd, void *buf, size_t count);
-       int retVal = read(fD, &key, 1);
+        read(fD, &key, 1);
     }
     return key; //value of key is the decimal value of the character. See ascii table. 
 }
@@ -157,11 +149,10 @@ char getkey() {
     in the tv_nsec parameter it is invalid because you shoulld use the tim.tv_sec parameter of the timespec struct. 
 */
 void sleep_ms(long ms) {
-	int nanoSeconds = ms * 1000000; 
 	struct timespec tim;
 	tim.tv_sec = 0;
 	tim.tv_nsec = ms * 1000000L;
-	int retval = nanosleep(&tim, NULL);
+    nanosleep(&tim, NULL);
 }
 
 void clear_screen(void *img) {
@@ -172,48 +163,52 @@ void clear_screen(void *img) {
 }
 
 void draw_pixel(void *img, int x, int y, color_t color) {
-    int offset = (x + (y * (xLineLength/2))) * 2; //*2 for Each pixel is 2 bytes? xLineLength /2 = number of x pixels (640)
+    int offset = (x + (y * xRez)) * 2; //*2 for Each pixel is 2 bytes? 
 	color_t* pixelAddr = img + (offset);
     *pixelAddr = color;
 }
 
+int abs(int x) {
+    if (x < 0)
+    {
+        x = x * -1;
+    }
+    return x;
+}
 
 /*
-*   draw_line doesnt work for all slopes. 
+    The folowing code has been taken and modified slightly 
+    from: http://tech-algorithm.com/articles/drawing-line-using-bresenham-algorithm/
 */
-void draw_line(void *img, int x1, int y1, int x2, int y2, color_t c) {
-	// function for line generation
-    //Code aquired from: https://www.geeksforgeeks.org/bresenhams-line-generation-algorithm/
-    //Code has been modified from original source to fit my requirements.
-   int m_new = 2 * (y2 - y1);
-   int slope_error_new = 0;
-   int x;
-   int y;
-   if ((x1 <= x2) && (y1 <= y2))
-   {
-        for (x = x1, y = y1; x <= x2; x++) 
-       {    
-
-          // Add slope to increment angle formed
-          slope_error_new += m_new; 
-      
-          // Slope error reached limit, time to increment
-          // y and update slope error.
-          if (y < yRez)
-          {
-            draw_pixel(img, x, y, c);
-          }
-           
-          if (slope_error_new >= 0)  
-          {       
-             y++;       
-             slope_error_new  -= 2 * (x2 - x1);    
-          }
-
-         
-       }
-   }
-      
+void draw_line(void *img, int x, int y, int x2, int y2, color_t c) {
+    int w = x2 - x;
+    int h = y2 - y;
+    int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
+    if (w<0) dx1 = -1; else if (w>0) dx1 = 1;
+    if (h<0) dy1 = -1; else if (h>0) dy1 = 1;
+    if (w<0) dx2 = -1; else if (w>0) dx2 = 1;
+    int longest = abs(w);
+    int shortest = abs(h);
+    if (!(longest>shortest)) {
+        longest = abs(h);
+        shortest = abs(w);
+        if (h<0) dy2 = -1; else if (h>0) dy2 = 1;
+        dx2 = 0;            
+    }
+    int numerator = longest >> 1;
+    int i;
+    for (i=0;i<=longest;i++) {
+        draw_pixel(img, x, y, c);
+        numerator += shortest ;
+        if (!(numerator<longest)) {
+            numerator -= longest;
+            x += dx1;
+            y += dy1;
+        } else {
+            x += dx2;
+            y += dy2;
+        }
+    }
 }
 
 void *new_offscreen_buffer() {
@@ -231,6 +226,14 @@ void blit(void *src) {
         *(screen_buffer + i) = *((char*) src + i); //Is this really copying memory? 
     }
 
+}
+
+int get_xrez() {
+    return xRez;
+}
+
+int get_yrez() {
+    return yRez;
 }
 
 

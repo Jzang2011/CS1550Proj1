@@ -21,3 +21,7 @@ void clear_screen(void *img);
 void *new_offscreen_buffer();
 
 void blit(void *src);
+
+int get_xrez();
+
+int get_yrez();

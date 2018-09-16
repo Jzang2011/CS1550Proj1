@@ -13,32 +13,6 @@
 /*
 -	Just used for testing purposes
 */
-void getKeyTest() {
-	char key = getkey();
-	while (key != 113) {
-		printf("Key is %d\n", key);
-		key = getkey();
-	}
-	printf("getKeyTest() Done.\n");
-}
-
-/*
--	Just used for testing purposes
-*/
-void sleepMsTest() {
-	printf("Starting sleepMSTest()\n");
-	int i;
-	for (i = 0; i < 10; ++i)
-	{
-		//sleep for 500ms = .5 second
-		sleep_ms(500); //max number of ms is 999 any more will cause nanosleep to error with invalid arguments. 
-		printf("i = %d\n", i);
-	}
-}
-
-/*
--	Just used for testing purposes
-*/
 void draw_big_pixel(void *img, int x, int y, color_t color){
 	int i;
 	int j;
@@ -52,11 +26,6 @@ void draw_big_pixel(void *img, int x, int y, color_t color){
 }
 
 int main(int argc, char **argv) {
-	// init_graphics_test();
-	// exit_graphics_test();
-	// getKeyTest();
-	// sleepMsTest();
-
 	printf("WELCOME TO SNAKE GAME:\n");
 	printf("use w,s,a,d keys to move the snake\n");
 	printf("press q to quit.\n");
@@ -64,12 +33,12 @@ int main(int argc, char **argv) {
 
 	char key = getkey();
 	
-	// int i;
-	// for (i = 10; i > 0; --i)
-	// {
-	// 	printf("--%d--\n", i);
-	// 	sleep_ms(999);
-	// }
+	int i;
+	for (i = 10; i > 0; --i)
+	{
+		printf("--%d--\n", i);
+		sleep_ms(999);
+	}
 
 	init_graphics();
 	char* offscreen_buffer = (char*) new_offscreen_buffer();
@@ -84,45 +53,28 @@ int main(int argc, char **argv) {
 
 	blit(offscreen_buffer);
 
-	//Testing corner cases. Round corners of QEMU window prevent seeing botom corners. 
-	color_t red = RGB(31,0,0);
-	// draw_pixel(offscreen_buffer, 639, 0, red);
-	// draw_pixel(offscreen_buffer, 0, 477, red);
-	// draw_pixel(offscreen_buffer, 0, 0, red);
-	// draw_pixel(offscreen_buffer, 639, 477, red);
-
-	int x = 0;
-	int y = 0;
-	
-	//working
-	for (y = 0; y < 480; y++)
-	{
-		draw_line(offscreen_buffer, 0, 0, 639, y, green);
-	}
-
-	//not working
-	// y = 0;
-	// for (y = 0; y < 480; y++)
-	// {
-	// 	draw_line(offscreen_buffer, 639, 0, 0, y, red);
-	// }
-	draw_line(offscreen_buffer, 0, 479, 639, 0, red);
-
-
-	blit(offscreen_buffer);
-
+	int last_Y_Coord = get_yrez() - 1;
 	while (key != 'q') {
 		draw_pixel(offscreen_buffer, x_coord, y_coord, black);
 
-		// draw_line(offscreen_buffer, 0, 0, 639, 479, green);
 		if (key == 'w') {
-			y_coord--;
+			if ((y_coord - 2) >= 0)
+			{
+				y_coord -= 2;
+			} else {
+				y_coord += (get_yrez() - 2);
+			}
 		} else if (key == 's') {
-			y_coord++;
+			if ((y_coord + 2) <= last_Y_Coord)
+			{
+				y_coord += 2;
+			} else {
+				y_coord -= (last_Y_Coord);
+			}
 		} else if (key == 'a') {
-			x_coord--;
+			x_coord -= 2;
 		} else if (key == 'd') {
-			x_coord++;
+			x_coord += 2;
 		}
 		draw_pixel(offscreen_buffer, x_coord, y_coord, green);
 		sleep_ms(5);
