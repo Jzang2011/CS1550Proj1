@@ -1,6 +1,6 @@
-//Public interface for.... library? 
+//Public interface for library.c 
 
-#define RGB(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31)) // move to header file
+#define RGB(r,g,b) (((r & 31) << 11) + ((g & 63) << 5) + (b & 31)) 
 
 typedef unsigned short color_t;
 

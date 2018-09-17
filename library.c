@@ -22,7 +22,7 @@
 #include <errno.h>
 
 struct termios termSettings;
-char* screen_buffer; //perhaps it may be easier to work with a screen buffer of color_t type? 
+char* screen_buffer; 
 char* offscreen_buffer; //you can get rid of this.
 int sb_size; //size of the screen_buffer;
 int yRez;
@@ -235,9 +235,3 @@ int get_xrez() {
 int get_yrez() {
     return yRez;
 }
-
-
-
-
-
-//Add funciton to clear offscreen buffer.

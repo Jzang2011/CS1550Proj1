@@ -1,29 +1,7 @@
 //Driver for program. 
 
 #include "graphics.h"
-#include <stdio.h> //just for testing
-
-//ASCII codes for keys;
-#define w_key	119
-#define a_key	97
-#define s_key	115
-#define d_key	100
-#define q_key 	113
-
-/*
--	Just used for testing purposes
-*/
-void draw_big_pixel(void *img, int x, int y, color_t color){
-	int i;
-	int j;
-	for (i = x; i < (x + 50); ++i)
-	{
-		for (j = y; i < (y + 50); ++j)
-		{
-			draw_pixel(img, i, j, color);
-		}
-	}
-}
+#include <stdio.h> 
 
 int main(int argc, char **argv) {
 	printf("WELCOME TO SNAKE GAME:\n");
@@ -54,34 +32,65 @@ int main(int argc, char **argv) {
 	blit(offscreen_buffer);
 
 	int last_Y_Coord = get_yrez() - 1;
+	int go_x;
+	int go_y;
+	int go_in_pos_dir;
 	while (key != 'q') {
-		draw_pixel(offscreen_buffer, x_coord, y_coord, black);
+		draw_pixel(offscreen_buffer, x_coord, y_coord, black); // clear previous pixel.
 
-		if (key == 'w') {
-			if ((y_coord - 2) >= 0)
-			{
-				y_coord -= 2;
-			} else {
-				y_coord += (get_yrez() - 2);
+		if (key != 0)
+		{
+			if (key == 'w') {
+				go_x = 0;
+				go_y = 1;
+				go_in_pos_dir = 0;
+			} else if (key == 's') {
+				go_x = 0;
+				go_y = 1;
+				go_in_pos_dir = 1;
+			} else if (key == 'a') {
+				go_x = 1;
+				go_y = 0;
+				go_in_pos_dir = 0;
+			} else if (key == 'd') {
+				go_x = 1;
+				go_y = 0;
+				go_in_pos_dir = 1;
 			}
-		} else if (key == 's') {
-			if ((y_coord + 2) <= last_Y_Coord)
-			{
-				y_coord += 2;
+		}
+
+		if ((go_x == 0) && (go_y == 1) && (go_in_pos_dir == 0)) {
+			// Go up
+			if ((y_coord - 1) >= 0) {
+				y_coord -= 1;
 			} else {
+				y_coord += (last_Y_Coord);
+			}
+		} else if ((go_x == 0) && (go_y == 1) && (go_in_pos_dir == 1)) {
+			// go down
+			if ((y_coord + 1) <= last_Y_Coord) {
+				y_coord += 1;
+			} else {
+				//wrap arround to top of screen
 				y_coord -= (last_Y_Coord);
 			}
-		} else if (key == 'a') {
-			x_coord -= 2;
-		} else if (key == 'd') {
-			x_coord += 2;
+		} else if ((go_x == 1) && (go_y == 0) && (go_in_pos_dir == 0)) {
+			// go left
+			x_coord -= 1;
+		} else if ((go_x == 1) && (go_y == 0) && (go_in_pos_dir == 1)) {
+			// go right 
+			x_coord += 1;
 		}
+		
 		draw_pixel(offscreen_buffer, x_coord, y_coord, green);
-		sleep_ms(5);
+		sleep_ms(1); //determins speed 
 		blit(offscreen_buffer);
 		key = getkey();
 	}
 
+	//game over. Clean up.
+	clear_screen(offscreen_buffer);
+	blit(offscreen_buffer);
 	exit_graphics();
 	printf("ALL Done.\n");
 	return 0;
